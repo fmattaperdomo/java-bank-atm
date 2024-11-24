@@ -1,6 +1,7 @@
 package org.example;
 import java.util.Scanner;
 
+
 public class Calculator {
     private Scanner scanner = new Scanner(System.in);
 
