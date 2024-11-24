@@ -1,9 +1,13 @@
 package org.example;
 import java.util.Scanner;
 
-public class ATM {
+public class ATM implements Authenticatable{
     private Calculator calculator = new Calculator();
-
+    @Override
+    public boolean authenticate(String pin) {
+        // Lógica de autenticación...
+        return true; // o false según el caso
+    }
     public void start() {
         Scanner scanner = new Scanner(System.in);
         boolean exit = false;
@@ -32,6 +36,7 @@ public class ATM {
         }
         scanner.close();
     }
+
 
     public static void main(String[] args) {
         ATM atm = new ATM();
