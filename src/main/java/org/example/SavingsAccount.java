@@ -15,7 +15,7 @@ public class SavingsAccount extends Account {
     @Override
     public void withdraw(double amount) throws InsufficientFundsException {
         if (amount > getBalance()) {
-            throw new InsufficientFundsException();
+            throw new InsufficientFundsException("Insufficient Funds");
         }
         // Lógica específica de retiro...
     }

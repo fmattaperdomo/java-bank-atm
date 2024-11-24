@@ -34,4 +34,15 @@ public abstract class Account implements Authenticatable {
     public boolean authenticate(String pin) {
         return this.pin.equals(pin);
     }
+    public void transferFunds(String targetAccountNumber, double amount)
+            throws InsufficientFundsException, InvalidAccountException {
+        if (balance < amount) {
+            throw new InsufficientFundsException("Fondos insuficientes");
+        }
+        if (!Bank.isValidAccount(targetAccountNumber)) {
+            throw new InvalidAccountException("Cuenta destino no válida");
+        }
+        balance -= amount;
+        Bank.getAccount(targetAccountNumber).deposit(amount);
+    }
 }

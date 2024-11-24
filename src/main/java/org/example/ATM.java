@@ -3,6 +3,13 @@ import java.util.Scanner;
 
 public class ATM implements Authenticatable{
     private Calculator calculator = new Calculator();
+
+    private static final String LOG_FILE = "transactions.log";
+    private TransactionLogger logger = new TransactionLogger(LOG_FILE);
+
+    public void performTransaction(String accountNumber, Transaction.TransactionType type, double amount) {
+        logger.logTransaction(accountNumber + " " + type + " " + amount);
+    }
     @Override
     public boolean authenticate(String pin) {
         // Lógica de autenticación...
